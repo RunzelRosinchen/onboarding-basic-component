@@ -1,5 +1,32 @@
 @import "node_modules/@biotope/element/lib/host.mixin";
 
-@include host('my-accordion') {
+@include host("my-accordion") {
+	.accordion {
+		padding-left: 10px;
+		padding-right: 10px;
+		font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+			"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
+		&__dropDown {
+			padding: 0 18px;
+			background-color: #e5f2fc;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.2s ease-out;
+		}
+
+		&__headline {
+			background-color: #415278;
+			color: white;
+			cursor: pointer;
+			padding: 18px;
+			margin: 0;
+			width: 100%;
+			font-size: 15px;
+			transition: 0.4s;
+			&:hover {
+				background-color: black;
+			}
+		}
+	}
 }

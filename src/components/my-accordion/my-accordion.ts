@@ -10,7 +10,19 @@ class MyAccordion extends Component< MyAccordionProps, MyAccordionState > {
    
   protected readonly defaultState: MyAccordionState = {};
 
-  public methods: MyAccordionMethods = {};
+  public methods: MyAccordionMethods = {
+    openAccordionItem: (event)=> {
+      event.target.classList.toggle("active");
+      let dropDown = event.target.nextElementSibling as HTMLElement;
+      if (dropDown.style.maxHeight) {
+        dropDown.style.maxHeight = null;
+      } else {
+        dropDown.style.maxHeight = dropDown.scrollHeight + "px";
+      }
+    }
+    
+
+  };
 
   public render(): HTMLFragment {
     return template( { ...this.props, ...this.state, ...this.methods });

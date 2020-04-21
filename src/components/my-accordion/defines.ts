@@ -15,7 +15,9 @@ interface MyAccordionState {}
 /**
  * Methods
  */
-interface MyAccordionMethods {}
+interface MyAccordionMethods {
+	openAccordionItem:Function;
+}
 
 
 export {
