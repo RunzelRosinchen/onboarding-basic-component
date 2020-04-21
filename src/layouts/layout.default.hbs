@@ -15,7 +15,7 @@
 </head>
 <body role="document" class="{{bodyClass}}">
     {{!-- {{bioInclude 'components/XHeader/scaffolding/XHeader' }} --}}
-    {{bioInclude (lookup . 'contentMain') }}
+    {{bioInclude (lookup . 'contentMain') object=json}}
 
 
     {{!-- {{bioInclude 'components/XFooter/scaffolding/XFooter' }} --}}

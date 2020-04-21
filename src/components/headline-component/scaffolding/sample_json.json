@@ -1,0 +1,18 @@
+{
+	"person1": {
+		"firstName": "Ivaylo",
+		"lastName": "Stoyanov"
+	},
+	"person2": {
+		"firstName": "Marc",
+		"lastName": "Emmanuel"
+    },
+    "person4": {
+		"firstName": "Thalia",
+		"lastName": "Emmanuel"
+	},
+	"person5": {
+		"firstName": "Kai",
+		"lastName": "Wißler"
+	}
+}
