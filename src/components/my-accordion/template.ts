@@ -10,15 +10,16 @@ import {
 export const template = (
 	data: MyAccordionProps & MyAccordionState & MyAccordionMethods
 ): HTMLFragment => {
-	const text = JSON.parse(data.json);
+	const accordionContent = JSON.parse(data.json);
 	return html`
 		<div class="accordion">
-				<span
+				<button
 					class="accordion__closeOpenAll"
 					onClick=${data.openCloseAllItems}
-					>+ Open all</span
+					>+ Open all</button
 				>
-			${text.map(panel => html`
+			${accordionContent.map(panel => html`
+			<section id=${panel.headline}>
 			<h2
 				class="accordion__headline"
 				onClick=${data.openAccordionItem}
@@ -29,7 +30,8 @@ export const template = (
 				<p>
 					${panel.content}
 				</p>
-			</div>`)}
+			</div>
+			</section>`)}
 		</div>
 		${createStyle(styles)}
 	`;
