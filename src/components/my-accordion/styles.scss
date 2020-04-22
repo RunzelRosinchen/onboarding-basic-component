@@ -2,15 +2,15 @@
 
 @include host("my-accordion") {
 	.accordion {
-		padding-left: 10px;
-		padding-right: 10px;
+		margin: 0 15px;
 		font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 			"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
-		h3 {
+		&__closeOpenAll {
 			font-size: 0.8em;
 			color: gray;
 			text-align: right;
+			cursor: pointer;
 		}
 
 		&__dropDown {
@@ -27,7 +27,6 @@
 			cursor: pointer;
 			padding: 18px;
 			margin: 0;
-			width: 100%;
 			font-size: 1.2em;
 			transition: 0.4s;
 

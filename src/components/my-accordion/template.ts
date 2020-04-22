@@ -27,7 +27,7 @@ export const template = (
 	}
 	return html`
 		<div class="accordion">
-		<h3 onClick=${data.openCloseAllItems}>Open all</h3>
+		<div><span class="accordion__closeOpenAll" onClick=${data.openCloseAllItems}>+ Open all</span></div>
 			${acc}
 		</div>
 		${createStyle(styles)}

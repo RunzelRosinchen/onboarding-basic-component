@@ -28,10 +28,10 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
     },
     openCloseAllItems: event => {
       let btn=event.target
-      if (btn.innerHTML === "Close all") {
-        btn.innerHTML = "Open all";
+      if (btn.innerHTML === "- Close all") {
+        btn.innerHTML = "+ Open all";
       } else {
-        btn.innerHTML = "Close all";
+        btn.innerHTML = "- Close all";
       }
       let dropDowns=this.shadowRoot.querySelectorAll(".accordion__dropDown");
       dropDowns.forEach(element => {
