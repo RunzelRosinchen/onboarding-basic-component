@@ -13,14 +13,13 @@ export const template = (
 	const accordionContent = JSON.parse(data.json);
 	return html`
 		<div class="accordion">
-			
-				<button
-					class="accordion__closeOpenAll"
-					onClick=${data.openCloseAllItems}
-				>
-					+ Open all
-				</button>
-		
+			<button
+				class="accordion__closeOpenAll"
+				onClick=${data.openCloseAllItems}
+			>
+				+ Open all
+			</button>
+
 			${accordionContent.map(
 				panel => html`
 					<section class="accordion__panel" id=${panel.headline}>
@@ -37,7 +36,7 @@ export const template = (
 						</div>
 					</section>
 				`
-			)}
+			)}		
 		</div>
 		${createStyle(styles)}
 	`;

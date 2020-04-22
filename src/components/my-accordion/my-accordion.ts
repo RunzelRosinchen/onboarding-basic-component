@@ -12,7 +12,7 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 
 	protected readonly defaultProps: MyAccordionProps = {
 		number: 2,
-		json: ""
+		json: ''
 	};
 
 	protected readonly defaultState: MyAccordionState = {};
@@ -21,21 +21,20 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 		openAccordionItem: event => {
 			event.target.classList.toggle('accordion__headline--active');
 			let dropDown = event.target.nextElementSibling as HTMLElement;
-			
 			if (dropDown.style.maxHeight) {
 				dropDown.style.maxHeight = null;
 			} else {
 				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
 			}
-			let btn=this.shadowRoot.querySelector(".accordion__closeOpenAll");
-			let activePanels = this.shadowRoot.querySelectorAll(".accordion__headline--active");
-			if(activePanels.length===3) {
+			let btn = this.shadowRoot.querySelector('.accordion__closeOpenAll');
+			let activePanels = this.shadowRoot.querySelectorAll(
+				'.accordion__headline--active'
+			);
+			if (activePanels.length === 3) {
 				btn.innerHTML = '- Close all';
-			}
-			else if(activePanels.length===0) {
+			} else if (activePanels.length === 0) {
 				btn.innerHTML = '+ Open all';
 			}
-			
 		},
 		openCloseAllItems: event => {
 			let btn = event.target;
@@ -63,7 +62,18 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 			}
 		}
 	};
-
+	
+	connectedCallback() {
+		window.addEventListener('resize', (() => {
+			let activeHeadlines = this.shadowRoot.querySelectorAll(
+				'.accordion__headline--active'
+			);
+			activeHeadlines.forEach(element => {
+				let dropDown = element.nextElementSibling as HTMLElement;
+				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
+			});
+		}).bind(this));
+	}
 	public render(): HTMLFragment {
 		return template({ ...this.props, ...this.state, ...this.methods });
 	}
