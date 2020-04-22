@@ -10,26 +10,19 @@ import {
 export const template = (
 	data: MyAccordionProps & MyAccordionState & MyAccordionMethods
 ): HTMLFragment => {
+	let acc = [];
+	for(let i=0; i<data.number; i++){
+		acc.push(html`
+			<h2 class="accordion__headline" onClick=${data.openAccordionItem}>
+				<slot name="section-${i+1}">Headline Section ${i+1}</slot>
+			</h2>
+			<div class="accordion__dropDown">
+				<p><slot name="content-${i+1}">Content Section ${i+1}</slot></p>
+			</div>`
+		)}
 	return html`
-		<div class="accordion">
-			<h2 class="accordion__headline" onClick=${data.openAccordionItem}>
-				<slot name="section-I">Headline Section I</slot>
-			</h2>
-			<div class="accordion__dropDown">
-				<p><slot name="content-I">Content Section I</slot></p>
-			</div>
-			<h2 class="accordion__headline" onClick=${data.openAccordionItem}>
-				<slot name="section-II">Headline Section I</slot>
-			</h2>
-			<div class="accordion__dropDown">
-				<p><slot name="content-II">Content Section I</slot></p>
-			</div>
-			<h2 class="accordion__headline" onClick=${data.openAccordionItem}>
-				<slot name="section-III">Headline Section I</slot>
-			</h2>
-			<div class="accordion__dropDown">
-				<p><slot name="content-III">Content Section I</slot></p>
-			</div>
+	<div class="accordion">
+		${acc}
 		</div>
 		${createStyle(styles)}
 	`;

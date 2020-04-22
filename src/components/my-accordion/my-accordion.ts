@@ -4,9 +4,11 @@ import { MyAccordionProps, MyAccordionState, MyAccordionMethods } from './define
 
 class MyAccordion extends Component< MyAccordionProps, MyAccordionState > {
   public static componentName = 'my-accordion';
-  public static attributes = [];
+  public static attributes = ["number"];
   
-  protected readonly defaultProps: MyAccordionProps = {};
+  protected readonly defaultProps: MyAccordionProps = {
+    number: 2,
+  };
    
   protected readonly defaultState: MyAccordionState = {};
 

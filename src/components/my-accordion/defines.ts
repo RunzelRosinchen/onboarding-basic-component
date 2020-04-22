@@ -5,7 +5,9 @@
 /**
  * Props
  */
-interface MyAccordionProps {}
+interface MyAccordionProps {
+	number:number;
+}
 
 /**
  * State
