@@ -7,6 +7,7 @@
  */
 interface MyAccordionProps {
 	number: number;
+	json: string;
 }
 
 /**

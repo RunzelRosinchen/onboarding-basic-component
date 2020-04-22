@@ -8,10 +8,11 @@ import {
 
 class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 	public static componentName = 'my-accordion';
-	public static attributes = ['number'];
+	public static attributes = ['number', 'json'];
 
 	protected readonly defaultProps: MyAccordionProps = {
-		number: 2
+		number: 2,
+		json: ""
 	};
 
 	protected readonly defaultState: MyAccordionState = {};
@@ -25,24 +26,32 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 			} else {
 				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
 			}
-    },
-    openCloseAllItems: event => {
-      let btn=event.target
-      if (btn.innerHTML === "- Close all") {
-        btn.innerHTML = "+ Open all";
-      } else {
-        btn.innerHTML = "- Close all";
-      }
-      let dropDowns=this.shadowRoot.querySelectorAll(".accordion__dropDown");
-      dropDowns.forEach(element => {
-        let dropDown=element as HTMLElement;
-      if (dropDown.style.maxHeight) {
-				dropDown.style.maxHeight = null;
+		},
+		openCloseAllItems: event => {
+			let btn = event.target;
+			let dropDowns = this.shadowRoot.querySelectorAll(
+				'.accordion__dropDown'
+			);
+			if (btn.innerHTML === '-- Close all') {
+				dropDowns.forEach(element => {
+					let dropDown = element as HTMLElement;
+					dropDown.previousElementSibling.classList.remove(
+						'accordion__headline--active'
+					);
+					dropDown.style.maxHeight = null;
+					btn.innerHTML = '+ Open all';
+				});
 			} else {
-				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
+				dropDowns.forEach(element => {
+					let dropDown = element as HTMLElement;
+					dropDown.previousElementSibling.classList.add(
+						'accordion__headline--active'
+					);
+					dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
+					btn.innerHTML = '-- Close all';
+				});
 			}
-    });
-    }
+		}
 	};
 
 	public render(): HTMLFragment {

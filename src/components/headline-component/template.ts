@@ -6,9 +6,10 @@ import { HeadlineComponentProps, HeadlineComponentState } from './defines';
 export const template = (
 	data: HeadlineComponentProps & HeadlineComponentState
 ): HTMLFragment => {
+	const text=JSON.parse(data.json) 
 	return html`
 		<h1 class="headline">
-			Hello <slot name="first-name">First name</slot>!🐣
+			Hello ${text[1].firstName}!🐣
 		</h1>
 		${createStyle(styles)}
 	`;

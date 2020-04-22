@@ -5,7 +5,9 @@
 /**
  * Props
  */
-interface HeadlineComponentProps {}
+interface HeadlineComponentProps {
+  json:string;
+}
 
 /**
  * State
