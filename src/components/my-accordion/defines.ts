@@ -6,7 +6,7 @@
  * Props
  */
 interface MyAccordionProps {
-	number:number;
+	number: number;
 }
 
 /**
@@ -18,12 +18,7 @@ interface MyAccordionState {}
  * Methods
  */
 interface MyAccordionMethods {
-	openAccordionItem:Function;
+	openAccordionItem: Function;
 }
 
-
-export {
-  MyAccordionProps,
-	MyAccordionState,
-	MyAccordionMethods
-}
+export { MyAccordionProps, MyAccordionState, MyAccordionMethods };
