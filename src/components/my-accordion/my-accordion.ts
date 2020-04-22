@@ -30,7 +30,7 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 			let btn=this.shadowRoot.querySelector(".accordion__closeOpenAll");
 			let activePanels = this.shadowRoot.querySelectorAll(".accordion__headline--active");
 			if(activePanels.length===3) {
-				btn.innerHTML = '-- Close all';
+				btn.innerHTML = '- Close all';
 			}
 			else if(activePanels.length===0) {
 				btn.innerHTML = '+ Open all';
@@ -42,7 +42,7 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 			let dropDowns = this.shadowRoot.querySelectorAll(
 				'.accordion__dropDown'
 			);
-			if (btn.innerHTML === '-- Close all') {
+			if (btn.innerHTML === '- Close all') {
 				dropDowns.forEach(element => {
 					let dropDown = element as HTMLElement;
 					dropDown.previousElementSibling.classList.remove(
@@ -58,7 +58,7 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 						'accordion__headline--active'
 					);
 					dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
-					btn.innerHTML = '-- Close all';
+					btn.innerHTML = '- Close all';
 				});
 			}
 		}
