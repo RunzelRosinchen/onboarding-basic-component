@@ -21,11 +21,21 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 		openAccordionItem: event => {
 			event.target.classList.toggle('accordion__headline--active');
 			let dropDown = event.target.nextElementSibling as HTMLElement;
+			
 			if (dropDown.style.maxHeight) {
 				dropDown.style.maxHeight = null;
 			} else {
 				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
 			}
+			let btn=this.shadowRoot.querySelector(".accordion__closeOpenAll");
+			let activePanels = this.shadowRoot.querySelectorAll(".accordion__headline--active");
+			if(activePanels.length===3) {
+				btn.innerHTML = '-- Close all';
+			}
+			else if(activePanels.length===0) {
+				btn.innerHTML = '+ Open all';
+			}
+			
 		},
 		openCloseAllItems: event => {
 			let btn = event.target;
