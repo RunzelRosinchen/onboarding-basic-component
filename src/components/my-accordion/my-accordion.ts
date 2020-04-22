@@ -14,7 +14,7 @@ class MyAccordion extends Component< MyAccordionProps, MyAccordionState > {
 
   public methods: MyAccordionMethods = {
     openAccordionItem: (event)=> {
-      event.target.classList.toggle("active");
+      event.target.classList.toggle("accordion__headline--active");
       let dropDown = event.target.nextElementSibling as HTMLElement;
       if (dropDown.style.maxHeight) {
         dropDown.style.maxHeight = null;

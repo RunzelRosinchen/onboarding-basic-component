@@ -22,9 +22,12 @@
 			padding: 18px;
 			margin: 0;
 			width: 100%;
-			font-size: 15px;
+			font-size: 1.2em;
 			transition: 0.4s;
 			&:hover {
+				background-color: #29344D;
+			}
+			&--active{
 				background-color: black;
 			}
 		}
