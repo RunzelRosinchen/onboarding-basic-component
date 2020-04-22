@@ -13,11 +13,11 @@ export const template = (
 	const accordionContent = JSON.parse(data.json);
 	return html`
 		<div class="accordion">
-				<button
+				<div class="accordion__flexWrapper"><button
 					class="accordion__closeOpenAll"
 					onClick=${data.openCloseAllItems}
 					>+ Open all</button
-				>
+				></div>
 			${accordionContent.map(panel => html`
 			<section id=${panel.headline}>
 			<h2
