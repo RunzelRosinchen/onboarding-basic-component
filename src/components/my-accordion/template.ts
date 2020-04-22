@@ -13,25 +13,31 @@ export const template = (
 	const accordionContent = JSON.parse(data.json);
 	return html`
 		<div class="accordion">
-				<div class="accordion__flexWrapper"><button
+			
+				<button
 					class="accordion__closeOpenAll"
 					onClick=${data.openCloseAllItems}
-					>+ Open all</button
-				></div>
-			${accordionContent.map(panel => html`
-			<section id=${panel.headline}>
-			<h2
-				class="accordion__headline"
-				onClick=${data.openAccordionItem}
-			>
-				${panel.headline}
-			</h2>
-			<div class="accordion__dropDown">
-				<p>
-					${panel.content}
-				</p>
-			</div>
-			</section>`)}
+				>
+					+ Open all
+				</button>
+		
+			${accordionContent.map(
+				panel => html`
+					<section class="accordion__panel" id=${panel.headline}>
+						<h2
+							class="accordion__headline"
+							onClick=${data.openAccordionItem}
+						>
+							${panel.headline}
+						</h2>
+						<div class="accordion__dropDown">
+							<p>
+								${panel.content}
+							</p>
+						</div>
+					</section>
+				`
+			)}
 		</div>
 		${createStyle(styles)}
 	`;

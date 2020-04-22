@@ -2,16 +2,20 @@
 
 @include host("my-accordion") {
 	.accordion {
+		display: flex;
+		justify-content: flex-end;
+		flex-wrap: wrap;
 		margin: 10px 15px;
 		padding: 15px 0px;
 		font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 			"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 		background-color: #e5f2fc;
 		z-index: -1;
-		&__flexWrapper {
-			display: flex;
-			justify-content: flex-end;
+
+		&__panel {
+			width: 100%;
 		}
+
 		&__closeOpenAll {
 			margin: 5px;
 			font-size: 0.8em;
