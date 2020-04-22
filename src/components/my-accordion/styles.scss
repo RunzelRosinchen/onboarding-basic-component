@@ -7,6 +7,12 @@
 		font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 			"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
+		h3 {
+			font-size: 0.8em;
+			color: gray;
+			text-align: right;
+		}
+
 		&__dropDown {
 			padding: 0 18px;
 			background-color: #e5f2fc;

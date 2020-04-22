@@ -19,6 +19,7 @@ interface MyAccordionState {}
  */
 interface MyAccordionMethods {
 	openAccordionItem: Function;
+	openCloseAllItems: Function;
 }
 
 export { MyAccordionProps, MyAccordionState, MyAccordionMethods };

@@ -25,7 +25,24 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 			} else {
 				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
 			}
-		}
+    },
+    openCloseAllItems: event => {
+      let btn=event.target
+      if (btn.innerHTML === "Close all") {
+        btn.innerHTML = "Open all";
+      } else {
+        btn.innerHTML = "Close all";
+      }
+      let dropDowns=this.shadowRoot.querySelectorAll(".accordion__dropDown");
+      dropDowns.forEach(element => {
+        let dropDown=element as HTMLElement;
+      if (dropDown.style.maxHeight) {
+				dropDown.style.maxHeight = null;
+			} else {
+				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
+			}
+    });
+    }
 	};
 
 	public render(): HTMLFragment {
