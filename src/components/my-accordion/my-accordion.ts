@@ -9,10 +9,10 @@ import {
 class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 	public static componentName = 'my-accordion';
 	public static attributes = ['api'];
-	private accordionContent=[{ headline: 'headline', content: 'content' }];
+	private accordionContent = [{ headline: 'headline', content: 'content' }];
 
 	protected readonly defaultProps: MyAccordionProps = {
-		api: '',
+		api: ''
 	};
 
 	protected readonly defaultState: MyAccordionState = {
@@ -70,7 +70,7 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 	attributeChangedCallback(api, previous, current) {
 		// Here, no props have changed yet
 		// You can do any check you want on the "current" attribute
-		super.attributeChangedCallback(api, previous, current)
+		super.attributeChangedCallback(api, previous, current);
 		fetch(this.props.api)
 			.then(response => response.json())
 			.then(json => {
@@ -86,9 +86,9 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 				});
 				this.accordionContent = json.quotes;
 				this.setState({ fetchedData: true });
-			}); }
+			});
+	}
 	connectedCallback() {
-		
 		window.addEventListener(
 			'resize',
 			(() => {
@@ -103,7 +103,10 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 		);
 	}
 	public render(): HTMLFragment {
-		return template({ ...this.props, ...this.state, ...this.methods }, this.accordionContent);
+		return template(
+			{ ...this.props, ...this.state, ...this.methods },
+			this.accordionContent
+		);
 	}
 }
 
