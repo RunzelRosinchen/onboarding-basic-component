@@ -8,9 +8,9 @@ import {
 } from './defines';
 
 export const template = (
-	data: MyAccordionProps & MyAccordionState & MyAccordionMethods
+	data: MyAccordionProps & MyAccordionState & MyAccordionMethods,
+	accordionContent
 ): HTMLFragment => {
-	const accordionContent = JSON.parse(data.json);
 	return html`
 		<div class="accordion">
 			<button
@@ -36,7 +36,7 @@ export const template = (
 						</div>
 					</section>
 				`
-			)}		
+			)}
 		</div>
 		${createStyle(styles)}
 	`;

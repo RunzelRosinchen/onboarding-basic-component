@@ -6,8 +6,7 @@
  * Props
  */
 interface MyAccordionProps {
-	number: number;
-	json: string;
+	api: string;
 }
 
 /**

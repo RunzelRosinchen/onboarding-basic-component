@@ -8,14 +8,16 @@ import {
 
 class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 	public static componentName = 'my-accordion';
-	public static attributes = ['number', 'json'];
+	public static attributes = ['api'];
+	private accordionContent=[{ headline: 'headline', content: 'content' }];
 
 	protected readonly defaultProps: MyAccordionProps = {
-		number: 2,
-		json: ''
+		api: '',
 	};
 
-	protected readonly defaultState: MyAccordionState = {};
+	protected readonly defaultState: MyAccordionState = {
+		fetchedData: 'false'
+	};
 
 	public methods: MyAccordionMethods = {
 		openAccordionItem: event => {
@@ -30,7 +32,10 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 			let activePanels = this.shadowRoot.querySelectorAll(
 				'.accordion__headline--active'
 			);
-			if (activePanels.length === 3) {
+			let allPanels = this.shadowRoot.querySelectorAll(
+				'.accordion__headline'
+			);
+			if (activePanels.length === allPanels.length) {
 				btn.innerHTML = '- Close all';
 			} else if (activePanels.length === 0) {
 				btn.innerHTML = '+ Open all';
@@ -62,20 +67,43 @@ class MyAccordion extends Component<MyAccordionProps, MyAccordionState> {
 			}
 		}
 	};
-	
+	attributeChangedCallback(api, previous, current) {
+		// Here, no props have changed yet
+		// You can do any check you want on the "current" attribute
+		super.attributeChangedCallback(api, previous, current)
+		fetch(this.props.api)
+			.then(response => response.json())
+			.then(json => {
+				json.quotes.map(item => {
+					delete item._id;
+					item.content = item.quoteText;
+					delete item.quoteText;
+					item.headline = item.quoteAuthor;
+					delete item.quoteAuthor;
+					if (item.headline === '') {
+						item.headline = 'anonymous';
+					}
+				});
+				this.accordionContent = json.quotes;
+				this.setState({ fetchedData: true });
+			}); }
 	connectedCallback() {
-		window.addEventListener('resize', (() => {
-			let activeHeadlines = this.shadowRoot.querySelectorAll(
-				'.accordion__headline--active'
-			);
-			activeHeadlines.forEach(element => {
-				let dropDown = element.nextElementSibling as HTMLElement;
-				dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
-			});
-		}).bind(this));
+		
+		window.addEventListener(
+			'resize',
+			(() => {
+				let activeHeadlines = this.shadowRoot.querySelectorAll(
+					'.accordion__headline--active'
+				);
+				activeHeadlines.forEach(element => {
+					let dropDown = element.nextElementSibling as HTMLElement;
+					dropDown.style.maxHeight = dropDown.scrollHeight + 'px';
+				});
+			}).bind(this)
+		);
 	}
 	public render(): HTMLFragment {
-		return template({ ...this.props, ...this.state, ...this.methods });
+		return template({ ...this.props, ...this.state, ...this.methods }, this.accordionContent);
 	}
 }
 
