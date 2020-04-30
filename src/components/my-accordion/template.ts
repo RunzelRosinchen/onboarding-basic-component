@@ -9,13 +9,13 @@ import {
 
 export const template = (
 	data: MyAccordionProps & MyAccordionState & MyAccordionMethods,
-	accordionContent
+	accordionContent, refs
 ): HTMLFragment => {
 	return html`
-		<div class="accordion">
-			<button
-				class="accordion__closeOpenAll"
-				onClick=${data.openCloseAllItems}
+		<div ref=${refs.accordion} class="accordion">
+			<button ref=${refs.toggleAllButton}
+				class="accordion__toggleAllButton"
+				onClick=${data.toggleAllItems}
 			>
 				+ Open all
 			</button>

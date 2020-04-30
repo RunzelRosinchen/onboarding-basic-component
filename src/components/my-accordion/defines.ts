@@ -19,7 +19,10 @@ interface MyAccordionState {}
  */
 interface MyAccordionMethods {
 	openAccordionItem: Function;
-	openCloseAllItems: Function;
+	toggleAllItems: Function;
+	changeToggleAllButtonText: Function;
+	init: Function;
+	fetchData: Function;
 }
 
 export { MyAccordionProps, MyAccordionState, MyAccordionMethods };

@@ -14,9 +14,22 @@
 
 		&__panel {
 			width: 100%;
+			&--active {
+				h2 {
+				background-color: #1c2436;
+					&:before {
+						background-color: #e5f2fc;
+					}
+					&:hover {
+						&:before {
+							background-color: #e5f2fc;
+						}
+					}
+				}
+			}
 		}
 
-		&__closeOpenAll {
+		&__toggleAllButton {
 			margin: 5px;
 			font-size: 0.8em;
 			color: gray;
@@ -24,7 +37,7 @@
 			border: none;
 			background-color: inherit;
 		}
-		
+
 		&__dropDown {
 			margin: 0px;
 			padding: 15px 18px;
@@ -67,18 +80,7 @@
 				}
 			}
 
-			&--active {
-				background-color: #1c2436;
-
-				&:before {
-					background-color: #e5f2fc;
-				}
-				&:hover {
-					&:before {
-						background-color: #e5f2fc;
-					}
-				}
-			}
+			
 		}
 	}
 }
