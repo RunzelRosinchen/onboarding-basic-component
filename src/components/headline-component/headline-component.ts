@@ -4,9 +4,11 @@ import { HeadlineComponentProps, HeadlineComponentState } from './defines';
 
 class HeadlineComponent extends Component< HeadlineComponentProps, HeadlineComponentState > {
   public static componentName = 'headline-component';
-  public static attributes = [];
+  public static attributes = ["json"];
   
-  protected readonly defaultProps: HeadlineComponentProps = {};
+  protected readonly defaultProps: HeadlineComponentProps = {
+    json: ""
+  };
    
   protected readonly defaultState: HeadlineComponentState = {};
 

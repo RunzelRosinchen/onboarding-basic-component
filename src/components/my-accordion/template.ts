@@ -8,26 +8,35 @@ import {
 } from './defines';
 
 export const template = (
-	data: MyAccordionProps & MyAccordionState & MyAccordionMethods
+	data: MyAccordionProps & MyAccordionState & MyAccordionMethods,
+	accordionContent, refs
 ): HTMLFragment => {
-	let acc = [];
-	for (let i = 0; i < data.number; i++) {
-		acc.push(html`
-			<h2 class="accordion__headline" onClick=${data.openAccordionItem}>
-				<slot name="section-${i + 1}">Headline Section ${i + 1}</slot>
-			</h2>
-			<div class="accordion__dropDown">
-				<p>
-					<slot name="content-${i + 1}"
-						>Content Section ${i + 1}</slot
-					>
-				</p>
-			</div>
-		`);
-	}
 	return html`
-		<div class="accordion">
-			${acc}
+		<div ref=${refs.accordion} class="accordion">
+			<button ref=${refs.toggleAllButton}
+				class="accordion__toggleAllButton"
+				onClick=${data.toggleAllItems}
+			>
+				+ Open all
+			</button>
+
+			${accordionContent.map(
+				panel => html`
+					<section class="accordion__panel" id=${panel.headline}>
+						<h2
+							class="accordion__headline"
+							onClick=${data.openAccordionItem}
+						>
+							${panel.headline}
+						</h2>
+						<div class="accordion__dropDown">
+							<p>
+								${panel.content}
+							</p>
+						</div>
+					</section>
+				`
+			)}
 		</div>
 		${createStyle(styles)}
 	`;

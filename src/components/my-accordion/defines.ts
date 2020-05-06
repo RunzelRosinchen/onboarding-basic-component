@@ -6,7 +6,7 @@
  * Props
  */
 interface MyAccordionProps {
-	number: number;
+	api: string;
 }
 
 /**
@@ -19,6 +19,10 @@ interface MyAccordionState {}
  */
 interface MyAccordionMethods {
 	openAccordionItem: Function;
+	toggleAllItems: Function;
+	changeToggleAllButtonText: Function;
+	init: Function;
+	fetchData: Function;
 }
 
 export { MyAccordionProps, MyAccordionState, MyAccordionMethods };
